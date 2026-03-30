@@ -1,0 +1,45 @@
+[[gen]]
+input = "chipi-spec/gamecube/dsp.chipi"
+lang = "ida"
+output = "gcdsp_proc.py"
+
+[gen.lang_options]
+processor_name = "gcdsp"
+processor_long_name = "Nintendo GameCube DSP"
+processor_id = 0x8002
+address_size = 16
+bytes_per_unit = 2
+
+register_names = [
+    # Address registers
+    "ar0", "ar1", "ar2", "ar3",
+    # Index registers
+    "ix0", "ix1", "ix2", "ix3",
+    # Wrap registers
+    "wr0", "wr1", "wr2", "wr3",
+    # Status registers
+    "st0", "st1", "st2", "st3",
+    # Accumulator high
+    "ac0.h", "ac1.h",
+    # Control/Status
+    "cr", "sr",
+    # Product register
+    "prod.l", "prod.m1", "prod.h", "prod.m2",
+    # AX registers
+    "ax0.l", "ax1.l", "ax0.h", "ax1.h",
+    # AC registers
+    "ac0.l", "ac1.l", "ac0.m", "ac1.m",
+    # Segment registers (required by IDA)
+    "CS", "DS",
+]
+segment_registers = ["CS", "DS"]
+
+[gen.lang_options.operand_types]
+addr = "address"
+
+[gen.lang_options.flow]
+calls = ["callcc", "callrcc"]
+branches = ["jcc", "jrcc", "ifcc"]
+unconditional_branches = []
+returns = ["retcc", "rticc"]
+stops = ["halt"]

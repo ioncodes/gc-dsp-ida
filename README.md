@@ -1,0 +1,1 @@
+A GameCube DSP processor plugin for IDA Pro 9.x! Generated using [chipi](https://github.com/ioncodes/chipi).
